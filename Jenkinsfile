@@ -1,13 +1,4 @@
 podTemplate(name: "nodebuild", inheritFrom: 'jnlp', serviceAccount: 'serverspec-sa', label: "nodebuild", containers: [
-  containerTemplate(name: 'node',
-                    image: 'node:4',
-                    ttyEnabled: true,
-                    command: 'cat',
-                    resourceLimitCpu: '250m',
-                    resourceRequestCpu: '250m',
-                    resourceRequestMemory: '250Mi',
-                    resourceLimitMemory: '250Mi',
-                    alwaysPullImage: true),
   containerTemplate(name: 'nodegoat',
                     image: '1njected/nodegoat',
                     ttyEnabled: true,
@@ -43,7 +34,9 @@ podTemplate(name: "nodebuild", inheritFrom: 'jnlp', serviceAccount: 'serverspec-
     checkout scm
 
     stage("build") {
-      sh "sleep 99999999"
+      container("nodegoat") {
+        sh "curl http://localhost:27017"
+      }
     }
   }
 }
