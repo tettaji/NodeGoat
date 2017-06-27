@@ -6,9 +6,9 @@ podTemplate(name: "nodebuild", inheritFrom: 'jnlp', serviceAccount: 'serverspec-
                     image: 'node:4',
                     ttyEnabled: true,
                     command: 'cat',
-                    resourceLimitCpu: '250m',
+                    resourceLimitCpu: '500m',
                     resourceRequestCpu: '500m',
-                    resourceRequestMemory: '250Mi',
+                    resourceRequestMemory: '500Mi',
                     resourceLimitMemory: '500Mi',
                     alwaysPullImage: true)])
 {
