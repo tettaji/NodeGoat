@@ -35,6 +35,8 @@ podTemplate(name: "nodebuild", inheritFrom: 'jnlp', serviceAccount: 'serverspec-
 
     stage("build") {
       container("nodegoat") {
+        sh "curl http://localhost:4000"
+
         sh "curl http://localhost:27017"
       }
     }
