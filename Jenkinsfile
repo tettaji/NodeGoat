@@ -31,7 +31,7 @@ podTemplate(name: "nodebuild", inheritFrom: 'jnlp', serviceAccount: 'serverspec-
 ])
 {
   node("nodebuild") {
-    checkout scm
+    // checkout scm
 
     stage("build") {
       container("nodegoat") {
